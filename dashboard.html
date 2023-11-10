@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard">
+    <h2>Welcome, {{ current_user.first_name }}</h2>
+    <p>This is your dashboard. You can view and manage your medical data here.</p>
+    
+    <h3>Your Medical Data:</h3>
+    <ul>
+        <li>Name: Manoviraj Gill</li>
+        <li>Age: 19</li>
+        <li>Blood Type: B-ve</li>
+        <li>Allergies: none(Medical record goes here) </li>
+    </ul>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfw8VTl5Cnn7eLSTNecv16sPN40GVJ3cP_cV20ShznOS3aAqQ/viewform?embedded=true" width="1500" height="912" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <form method="POST" action="{{ url_for('dashboard') }}">
+        <input type="text" name="search_term" placeholder="Search">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Display the search summary if available -->
+    {% if search_summary %}
+    <h3>Summary:</h3>
+    <p>{{ search_summary }}</p>
+    {% endif %}
+    
+    
+    
+</div>
+{% endblock %}
